@@ -57,7 +57,6 @@ def leerCoches():
                     mycar.caractList.append(value)
                 coches_list.append(mycar)
 
-
 # pedirCoches()
 leerCoches()
 print(coches_list)

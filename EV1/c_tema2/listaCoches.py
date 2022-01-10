@@ -66,11 +66,6 @@ print(coches_list)
 
 
 
-
-
-
-
-
 #otra forma
 # import os
 # from coches import Coche
