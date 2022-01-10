@@ -1,0 +1,128 @@
+[
+    {
+        "collaborative": false,
+        "description": "",
+        "external_urls": {
+            "spotify": "https://open.spotify.com/playlist/4BCCiOf8zwaEbnk9sPSKGQ"
+        },
+        "href": "https://api.spotify.com/v1/playlists/4BCCiOf8zwaEbnk9sPSKGQ",
+        "id": "4BCCiOf8zwaEbnk9sPSKGQ",
+        "images": [],
+        "name": "Desde Python",
+        "owner": {
+            "display_name": "UserTest",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/user/rauby2rakh67zr9304hy081ja"
+            },
+            "href": "https://api.spotify.com/v1/users/rauby2rakh67zr9304hy081ja",
+            "id": "rauby2rakh67zr9304hy081ja",
+            "type": "user",
+            "uri": "spotify:user:rauby2rakh67zr9304hy081ja"
+        },
+        "primary_color": null,
+        "public": false,
+        "snapshot_id": "MSwxYTQxNzk3ZDc0MTc5Y2I1ZjA3NWM1YWQzNTUwMWE5NTIzYmRkOWI5",
+        "tracks": {
+            "href": "https://api.spotify.com/v1/playlists/4BCCiOf8zwaEbnk9sPSKGQ/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:4BCCiOf8zwaEbnk9sPSKGQ"
+    },
+    {
+        "collaborative": false,
+        "description": "",
+        "external_urls": {
+            "spotify": "https://open.spotify.com/playlist/160XIB4gCIbVEM5rQtaNsr"
+        },
+        "href": "https://api.spotify.com/v1/playlists/160XIB4gCIbVEM5rQtaNsr",
+        "id": "160XIB4gCIbVEM5rQtaNsr",
+        "images": [],
+        "name": "Desde Python",
+        "owner": {
+            "display_name": "UserTest",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/user/rauby2rakh67zr9304hy081ja"
+            },
+            "href": "https://api.spotify.com/v1/users/rauby2rakh67zr9304hy081ja",
+            "id": "rauby2rakh67zr9304hy081ja",
+            "type": "user",
+            "uri": "spotify:user:rauby2rakh67zr9304hy081ja"
+        },
+        "primary_color": null,
+        "public": false,
+        "snapshot_id": "MSwxNTc0N2MzMjI2MGRiZmVhYTVmMTFiMWJmOGU3NzkzYjA3Yjk0ZDg3",
+        "tracks": {
+            "href": "https://api.spotify.com/v1/playlists/160XIB4gCIbVEM5rQtaNsr/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:160XIB4gCIbVEM5rQtaNsr"
+    },
+    {
+        "collaborative": false,
+        "description": "New playlist description",
+        "external_urls": {
+            "spotify": "https://open.spotify.com/playlist/74nOXfJ0ZfwzdeMU7oQUac"
+        },
+        "href": "https://api.spotify.com/v1/playlists/74nOXfJ0ZfwzdeMU7oQUac",
+        "id": "74nOXfJ0ZfwzdeMU7oQUac",
+        "images": [],
+        "name": "New Playlist",
+        "owner": {
+            "display_name": "UserTest",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/user/rauby2rakh67zr9304hy081ja"
+            },
+            "href": "https://api.spotify.com/v1/users/rauby2rakh67zr9304hy081ja",
+            "id": "rauby2rakh67zr9304hy081ja",
+            "type": "user",
+            "uri": "spotify:user:rauby2rakh67zr9304hy081ja"
+        },
+        "primary_color": null,
+        "public": false,
+        "snapshot_id": "MiwyNjdkZmFmMjQ4ODE0MDdjYTgxNmQ1ODExM2RhYTBjNjk4ZTU4MGEz",
+        "tracks": {
+            "href": "https://api.spotify.com/v1/playlists/74nOXfJ0ZfwzdeMU7oQUac/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:74nOXfJ0ZfwzdeMU7oQUac"
+    },
+    {
+        "collaborative": false,
+        "description": "bnskljdfbkjgc",
+        "external_urls": {
+            "spotify": "https://open.spotify.com/playlist/5N2pi1HjYWfAuvuWA985WD"
+        },
+        "href": "https://api.spotify.com/v1/playlists/5N2pi1HjYWfAuvuWA985WD",
+        "id": "5N2pi1HjYWfAuvuWA985WD",
+        "images": [
+            {
+                "height": 640,
+                "url": "https://i.scdn.co/image/ab67616d0000b273ef0d4234e1a645740f77d59c",
+                "width": 640
+            }
+        ],
+        "name": "Prueba",
+        "owner": {
+            "display_name": "UserTest",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/user/rauby2rakh67zr9304hy081ja"
+            },
+            "href": "https://api.spotify.com/v1/users/rauby2rakh67zr9304hy081ja",
+            "id": "rauby2rakh67zr9304hy081ja",
+            "type": "user",
+            "uri": "spotify:user:rauby2rakh67zr9304hy081ja"
+        },
+        "primary_color": null,
+        "public": false,
+        "snapshot_id": "MyxhZDNlOTY1MjJiM2VkY2Y1YzhhMDBkNDUwMjJkZmRkYmRjYTk0MTMz",
+        "tracks": {
+            "href": "https://api.spotify.com/v1/playlists/5N2pi1HjYWfAuvuWA985WD/tracks",
+            "total": 1
+        },
+        "type": "playlist",
+        "uri": "spotify:playlist:5N2pi1HjYWfAuvuWA985WD"
+    }
+]

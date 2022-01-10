@@ -1,0 +1,5 @@
+Fiat;Multipla;Azul
+Tesla;X;ROjo
+Volvo;Tato;Verde Cactus;Maletero amplio;Comomohabid
+Mercedes;Benz;Gris;7 plazas;Maletero amplio(familiar);Navegación GPS
+Seat;Leon;Blanco

@@ -1,0 +1,56 @@
+[
+    {
+        "marca": "Audi",
+        "modelo": "r8",
+        "color": "azul"
+    },
+    {
+        "marca": "Audi",
+        "modelo": "q8",
+        "color": "verde"
+    },
+    {
+        "marca": "Seat",
+        "modelo": "Ibiza",
+        "color": "Negro"
+    },
+    {
+        "marca": "Kia",
+        "modelo": "ceed",
+        "color": "amarillo"
+    },
+    {
+        "marca": "mercedes",
+        "modelo": "clase s",
+        "color": "gris",
+        "extras": [
+            "aaa",
+            " bbb",
+            " uvdf",
+            " nvkjuiansd"
+        ],
+        "personas": [
+            "pepe",
+            " pepa",
+            " jose",
+            " josefa"
+        ]
+    },
+    {
+        "marca": "mercedesvadsf",
+        "modelo": "clase z",
+        "color": "gris",
+        "extras": [
+            "aaa",
+            " bbb",
+            " uvdf",
+            " nvkjuiansd"
+        ],
+        "personas": [
+            "pepe",
+            " pepa",
+            " jose",
+            " josefa"
+        ]
+    }
+]

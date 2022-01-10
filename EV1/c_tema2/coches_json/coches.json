@@ -1,0 +1,32 @@
+[
+    {
+        "marca": "a",
+        "modelo": "d",
+        "color": "c",
+        "extras": []
+    },
+    {
+        "marca": "Tesla",
+        "modelo": "X",
+        "color": "ojo",
+        "extras": []
+    },
+    {
+        "marca": "ante",
+        "modelo": "laduda",
+        "color": "JuegaSafe",
+        "extras": [
+            "no"
+        ]
+    },
+    {
+        "marca": "Seat",
+        "modelo": "Ibiza",
+        "color": "Verde",
+        "extras": [
+            "5 plazas",
+            " pantalla",
+            " electrico"
+        ]
+    }
+]
