@@ -13,8 +13,8 @@ def get_posts():
         posts = []
         with open('data/posts.json', 'r') as json_file:
             posts = json.load(json_file)
-        # for post in posts:
-        #     del post['body']
+        for post in posts:
+            del post['body']
         return jsonify(posts), 200
     except Exception:
         return jsonify({'ERROR': 'Error desconocido'}), 400
@@ -112,8 +112,8 @@ def get_comments():
         comments = []
         with open('data/comments.json', 'r') as json_file:
             comments = json.load(json_file)
-            # for c in comments:
-            #     del c['body']
+            for c in comments:
+                del c['body']
         return jsonify(comments), 200
     except Exception:
         return jsonify({'ERROR': 'Error desconocido'}), 400

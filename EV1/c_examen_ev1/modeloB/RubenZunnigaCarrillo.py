@@ -24,10 +24,12 @@ def ejercicio1():
 def ejercicio2():
 	search = 'Nice job, Jennifer!'
 	posts = requests.get(f'{BASE_URL}posts').json()
+	ids = [c['id'] for c in posts]
 	try:
-		for post in posts:
-			if search in post['body']:
-				return post['id']
+		for id in ids:
+			bdy = requests.get(f'{BASE_URL}posts/{id}').json()
+			if search in bdy['body']:
+				return bdy['id']
 	except Exception:
 		print("no hay body")
 	return None
@@ -42,13 +44,17 @@ def ejercicio3():
 	return
 
 def ejercicio4():
-	comments = requests.get(f'{BASE_URL}comments').json()
 	try:
-		for com in comments:
-			if com['body'] == "":
-				req = requests.delete(f'{BASE_URL}comments/{com["id"]}')
+		comments = requests.get(f'{BASE_URL}comments').json()
+		ids = [c['id'] for c in comments]
+	
+		for id in ids:
+			bdy = requests.get(f'{BASE_URL}comments/{id}').json()
+			if bdy['body'] == "":
+				req = requests.delete(f'{BASE_URL}comments/{bdy["id"]}')
 				# print(req.status_code)
-	except Exception:
+	except Exception as e:
+		print(str(e))
 		print("no hay body")
 	return
 

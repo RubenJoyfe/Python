@@ -47,12 +47,5 @@
         "postId": 8,
         "name": "Nuevo Comentario Examen",
         "email": "examen@python.py"
-    },
-    {
-        "id": 8,
-        "body": "Texto nuevo comentario examen",
-        "postId": 8,
-        "name": "Nuevo Comentario Examen",
-        "email": "examen@python.py"
     }
 ]
