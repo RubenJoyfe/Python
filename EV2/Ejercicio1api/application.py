@@ -1,4 +1,5 @@
 from distutils.dep_util import newer
+from enum import IntEnum
 from flask import Flask, request, jsonify, abort
 from datetime import datetime, timedelta
 from functools import wraps
@@ -7,18 +8,29 @@ import requests, json, os, jwt
 
 application = Flask(__name__)
 path_base = os.path.dirname(os.path.abspath(__file__))
+JSON_KEY = 'ContraseñaSuperSecretaQuenodeberíaSaberNADIE:=)'
 
-def token_required(f):
-    @wraps(f)
-    def decorated(*args, **kargs):
-        try:
-            token = request.headers['Authorization'].split()[1]
-            user_data = jwt.decode(token, 'ContraseñaSuperSecretaQuenodeberíaSaberNADIE:=)', algorithms=['HS256'])
-            return f(user_data['id'], *args, **kargs)
-        except Exception as e:
-            abort(401)
-        pass
-    return decorated
+class UserType(IntEnum):
+    SUPERADMIN = 1
+    ADMIN = 5
+    GESTOR = 10
+    USUARIO = 1000
+
+def check_auth(role):
+    def decorator(f):
+        @wraps(f)
+        def wrapper(*args, **kargs):
+            try:
+                token = request.headers['Authorization'].split()[1]
+                user_data = jwt.decode(token, 'ContraseñaSuperSecretaQuenodeberíaSaberNADIE:=)', algorithms=['HS256'])
+                if user_data['type'] > role:
+                    abort(401)
+                return f(user_data['id'], *args, **kargs)
+            except Exception as e:
+                abort(401)
+            pass
+        return wrapper
+    return decorator
 
 @application.route("/")
 def hello_world():
@@ -34,10 +46,10 @@ def login():
                 token = jwt.encode(
                     {
                         "id": usr['id'],
-                        'type': 1,
-                        'exp': datetime.utcnow() + timedelta(minutes=1)
+                        'type': 5,
+                        'exp': datetime.utcnow() + timedelta(hours=24)
                     }
-                    , 'ContraseñaSuperSecretaQuenodeberíaSaberNADIE:=)', algorithm='HS256')
+                    , JSON_KEY, algorithm='HS256')
                 return jsonify({
                     "username": usr['username'],
                     "token": token
@@ -45,7 +57,7 @@ def login():
     return '', 401
 
 @application.route("/users", methods=['POST'])
-@token_required
+@check_auth(UserType.ADMIN)
 def create_user(user_id):
     # if'Authorization' not in request.headers:
     #     return 'Sin autenticación', 403
@@ -74,24 +86,7 @@ def create_user(user_id):
                 "id": newId,
                 "name": data['user'],
                 "username": data['user'],
-                "email": data['pass'],
-                "address": {
-                    "street": "",
-                    "suite": "",
-                    "city": "",
-                    "zipcode": "",
-                "geo": {
-                    "lat": "",
-                    "lng": ""
-                }
-                },
-                "phone": "",
-                "website": "",
-                "company": {
-                    "name": "",
-                    "catchPhrase": "",
-                    "bs": ""
-                }
+                "email": data['pass']
                 }
     # Agrego el usuario introducido y guardo en el fichero los usuarios
     users.append(new_user)
