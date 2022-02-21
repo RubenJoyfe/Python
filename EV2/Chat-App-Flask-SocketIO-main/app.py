@@ -15,7 +15,7 @@ socketio = SocketIO(app, manage_session=False)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if(session.get('username') is not None):
-        return render_template('chat.html', session = session)
+        return render_template('chat.html', session = session) # return redirect(url_for('chat'))
     return render_template('index.html')
 
 @app.route('/chat', methods=['GET', 'POST'])
@@ -32,6 +32,11 @@ def chat():
             return render_template('chat.html', session = session)
         else:
             return redirect(url_for('index'))
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 @socketio.on('join', namespace='/chat')
 def join(message):
