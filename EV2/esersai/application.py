@@ -1,53 +1,14 @@
-from turtle import update
-from unittest import result
-from pymongo import MongoClient
-
-client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB+Compass&ssl=false')
-
-db = client.python2b
-
-# filter = {'user': 'admin'}
-# projection = {}
-# user = db.test.find_one(filter, projection)
-# print(user)
-
-
-# filter = {}
-# projection = {'user': 1, '_id': 0}
-# users = db.test.find(filter, projection)
-# for u in users:
-#     print(u)
-
-# # Creamos un usuario
-# new_user = {
-#     'nick': 'admin1',
-#     'pass': '123456'
-# }
-# result = db.test.insert_one(new_user)
-# print(result.inserted_id)
-# # Borramos el usuario que acabamos de insertar
-# filter = {'nick': 'admin1'}
-# result = db.test.delete_one(filter)
-# print(result.deleted_count)
-
-# # Actualizamos el usuario
-# filter = {'nick': 'admin1'}
-# update = {'$set': {'nick': 'admin', 'login': True}}
-# result = db.test.update_one(filter, update)
-
-#
-
 from distutils.dep_util import newer
 from enum import IntEnum
 from flask import Flask, request, jsonify, abort
+from socketio import *
 from datetime import datetime, timedelta
 from functools import wraps
 from itsdangerous import exc
 import requests, json, os, jwt
 
 application = Flask(__name__)
-client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB+Compass&ssl=false')
-db = client.python2b
+path_base = os.path.dirname(os.path.abspath(__file__))
 JSON_KEY = 'ContraseñaSuperSecretaQuenodeberíaSaberNADIE:=)'
 
 class UserType(IntEnum):
@@ -78,27 +39,38 @@ def hello_world():
 
 @application.route("/login", methods=['POST'])
 def login():
-    filter = {'user': request.form['user'], 'pass': request.form['pass']}
-    projection = {'type': 1}
-    user = db.test.find_one(filter, projection)
-    
-    if user:
-        token = jwt.encode(
-            {
-                "id": str(user['_id']),
-                'type': user['type'],
-                'exp': datetime.utcnow() + timedelta(hours=24)
-            }
-            , JSON_KEY, algorithm='HS256')
-        return jsonify({
-            "id": str(user['_id']),
-            "token": token
-        }), 200 
+    with open(f'{path_base}/users.json', 'r') as f:
+        users=json.loads(f.read())
+    for usr in users:
+        if usr['username'] == request.form['user']:
+            if usr['email'] == request.form['pass']:
+                token = jwt.encode(
+                    {
+                        "id": usr['id'],
+                        'type': 5,
+                        'exp': datetime.utcnow() + timedelta(hours=24)
+                    }
+                    , JSON_KEY, algorithm='HS256')
+                return jsonify({
+                    "username": usr['username'],
+                    "token": token
+                }), 200
     return '', 401
 
 @application.route("/users", methods=['POST'])
 @check_auth(UserType.ADMIN)
 def create_user(user_id):
+    # if'Authorization' not in request.headers:
+    #     return 'Sin autenticación', 403
+    # token = request.headers['Authorization'].split()[1]
+    # try:
+    #     user_data = jwt.decode(token, 'ContraseñaSuperSecretaQuenodeberíaSaberNADIE:=)', algorithms=['HS256'])
+    # except Exception as e:
+    #     return str(e), 401
+
+    # if user_data['type'] != 1:
+    #     return 'No tienes permisos para crear usuarios', 403
+
     data = request.get_json() # Obtener el json de la peticion
     # Leo el archivo de usuarios y lo guardo
     with open(f'{path_base}/users.json', 'r') as f:
@@ -106,6 +78,11 @@ def create_user(user_id):
     # BUSCAR NUEVA ID
     newId = max([usr['id'] for usr in users]) + 1
     # ESTRUCTURA USUARIO CON SUS DATOS
+    # new_user = dict.fromkeys(list(users[0].keys()))
+    # new_user['id'] = newId
+    # new_user['name'] = data['user']
+    # new_user['username'] = data['user']
+    # new_user['email'] = data['pass']
     new_user = {
                 "id": newId,
                 "name": data['user'],

@@ -36,7 +36,6 @@ db = client.python2b
 # result = db.test.update_one(filter, update)
 
 #
-
 from distutils.dep_util import newer
 from enum import IntEnum
 from flask import Flask, request, jsonify, abort
